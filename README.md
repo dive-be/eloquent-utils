@@ -32,7 +32,7 @@ class Country extends Model
 
 ### Unguarded
 
-Disables [mass assignment](https://laravel.com/docs/9.x/eloquent#mass-assignment) on a **per model basis**.
+Disables [mass assignment protection](https://laravel.com/docs/9.x/eloquent#mass-assignment) on a **per model basis**.
 
 ```php
 class Product extends Model
