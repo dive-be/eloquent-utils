@@ -3,7 +3,10 @@
     "description": "Declarative Eloquent utilities for an improved DX",
     "keywords": [
         "dive",
-        "eloquent-utils"
+        "eloquent",
+        "support",
+        "utilities",
+        "declarative"
     ],
     "homepage": "https://github.com/dive-be/eloquent-utils",
     "license": "MIT",
@@ -20,32 +23,18 @@
         "illuminate/database": "^9.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.8",
-        "nunomaduro/larastan": "^2.1",
-        "orchestra/testbench": "^7.5",
-        "pestphp/pest": "^1.21",
-        "pestphp/pest-plugin-laravel": "^1.2"
+        "friendsofphp/php-cs-fixer": "^3.8"
     },
     "autoload": {
         "psr-4": {
             "Dive\\Eloquent\\": "src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests"
-        }
-    },
     "scripts": {
-        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
-        "format": "vendor/bin/php-cs-fixer fix --config .php-cs-fixer.dist.php --allow-risky=yes",
-        "test": "vendor/bin/pest"
+        "format": "vendor/bin/php-cs-fixer fix --config .php-cs-fixer.dist.php --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
