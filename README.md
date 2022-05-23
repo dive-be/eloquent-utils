@@ -3,8 +3,12 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dive-be/eloquent-utils.svg?style=flat-square)](https://packagist.org/packages/dive-be/eloquent-utils)
 
 
-This package provides declarative versions for some of the common tasks when dealing with `Eloquent` models, 
-and also a couple of other goodies.
+This package is a collection of declarative tools for common `Eloquent` tasks.
+
+- [DisablesTimestamps](#disablestimestamps)
+- [InteractsWithStaticData](#interactswithstaticdata)
+- [Unguarded](#unguarded)
+- [Unwritable](#unwritable)
 
 ## Installation
 
@@ -15,11 +19,6 @@ composer require dive-be/eloquent-utils
 ```
 
 ## Usage
-
-- [DisablesTimestamps](#disablestimestamps)
-- [InteractsWithStaticData](#interactswithstaticdata)
-- [Unguarded](#unguarded)
-- [Unwritable](#unwritable)
 
 Again, the primary purpose is to provide a **declarative** interface for frequent **imperative** tasks.
 The added benefit is that a person skimming through the model can immediately see what's going on due to the declarative nature.
