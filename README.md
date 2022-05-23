@@ -16,6 +16,11 @@ composer require dive-be/eloquent-utils
 
 ## Usage
 
+- [DisablesTimestamps](#disablestimestamps)
+- [InteractsWithStaticData](#interactswithstaticdata)
+- [Unguarded](#unguarded)
+- [Unwritable](#unwritable)
+
 Again, the primary purpose is to provide a **declarative** interface for frequent **imperative** tasks.
 The added benefit is that a person skimming through the model can immediately see what's going on due to the declarative nature.
 
