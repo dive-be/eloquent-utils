@@ -98,15 +98,25 @@ class Product extends Model
 }
 ```
 
+```php
+Product::find(1337)->fill([
+    'sku' => 'abcdefg',
+])->save(); // true
+```
+
 ### Unwritable
 
-Makes your Eloquent model read-only and enforces it.
+Makes your Eloquent model read-only.
 
 ```php
-class Language extends Model
+class Coupon extends Model
 {
     use \Dive\Eloquent\Unwritable;
 }
+```
+
+```php
+Coupon::find(10)->update(['code' => 'je-suis-rogue']); // BadMethodCallException
 ```
 
 ## Changelog
