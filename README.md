@@ -41,6 +41,17 @@ class Product extends Model
 }
 ```
 
+### Unwritable
+
+Makes your Eloquent model read-only and enforces it.
+
+```php
+class Language extends Model
+{
+    use \Dive\Eloquent\Unwritable;
+}
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
