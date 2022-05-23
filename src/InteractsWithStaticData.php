@@ -2,9 +2,9 @@
 
 namespace Dive\Eloquent;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
-use RuntimeException;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Model
@@ -12,47 +12,52 @@ use RuntimeException;
 trait InteractsWithStaticData
 {
     use DisablesTimestamps;
+    use Unwritable;
 
     public static array $source;
 
     public static function all($columns = ['*']): Collection
     {
-        return Collection::make(static::$source)
-            ->map(static fn (array $attributes) => static::hydrate($attributes, $columns))
+        $model = new static();
+
+        return $model
+            ->newCollection(static::$source)
+            ->map(static fn (array $attributes) => $model->hydrate($attributes, $columns))
             ->values();
     }
 
-    public static function find($id, $columns = ['*']): ?static
+    public static function find(int|string $id, $columns = ['*']): ?static
     {
-        return transform(Arr::get(static::$source, static::uniqueBy($id)),
-            static fn (array $attributes) => static::hydrate($attributes, $columns)
+        $model = new static();
+
+        return transform(Arr::get(static::$source, $model->uniqueBy($id)),
+            static fn (array $attributes) => $model->hydrate($attributes, $columns)
         );
     }
 
-    protected static function hydrate(array $attributes, array $columns): static
+    public static function findMany(array|Arrayable $ids, array $columns = ['*']): Collection
     {
-        static $model = new self();
+        $model = new static();
 
-        return $model->newInstance($columns === ['*'] ? $attributes : Arr::only($attributes, $columns), true);
+        if ($ids instanceof Arrayable) {
+            $ids = $ids->toArray();
+        }
+
+        $ids = array_flip(array_map($model->uniqueBy(...), $ids));
+
+        return $model
+            ->newCollection(array_intersect_key(static::$source, $ids))
+            ->map(static fn (array $attributes) => $model->hydrate($attributes, $columns))
+            ->values();
     }
 
-    protected static function uniqueBy($value): int|string
+    protected function hydrate(array $attributes, array $columns): static
+    {
+        return $this->newInstance($columns === ['*'] ? $attributes : Arr::only($attributes, $columns), true);
+    }
+
+    protected function uniqueBy(int|string $value): int|string
     {
         return $value;
-    }
-
-    public function delete(): never
-    {
-        throw new RuntimeException('Invalid operation: static data must stay static.');
-    }
-
-    public function save(array $options = []): never
-    {
-        $this->delete();
-    }
-
-    public function update(array $attributes = [], array $options = []): never
-    {
-        $this->save();
     }
 }
