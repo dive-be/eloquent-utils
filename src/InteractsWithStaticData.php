@@ -51,6 +51,11 @@ trait InteractsWithStaticData
             ->values();
     }
 
+    public function resolveRouteBinding($value, $field = null): ?static
+    {
+        return is_null($field) ? static::find($value) : parent::resolveRouteBinding($value, $field);
+    }
+
     protected function hydrate(array $attributes, array $columns): static
     {
         return $this->newInstance($columns === ['*'] ? $attributes : Arr::only($attributes, $columns), true);
