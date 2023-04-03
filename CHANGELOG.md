@@ -2,6 +2,12 @@
 
 All notable changes to `eloquent-utils` will be documented in this file.
 
+## 0.1.2 - 2023-04-03
+
+### Fixed
+
+- `$model->is(...)` equality checks will now succeed when compared with models retrieved from the database.
+
 ## 0.1.1 - 2022-05-24
 
 ### Added
