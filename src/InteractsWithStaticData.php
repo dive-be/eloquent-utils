@@ -19,6 +19,7 @@ trait InteractsWithStaticData
     public static function all($columns = ['*']): Collection
     {
         $model = new static();
+        $model->setConnection($model->getConnection()->getName());
 
         return $model
             ->newCollection(static::$source)
@@ -29,6 +30,7 @@ trait InteractsWithStaticData
     public static function find(int|string $id, $columns = ['*']): ?static
     {
         $model = new static();
+        $model->setConnection($model->getConnection()->getName());
 
         return transform(Arr::get(static::$source, $model->uniqueBy($id)),
             static fn (array $attributes) => $model->hydrate($attributes, $columns)
@@ -38,6 +40,7 @@ trait InteractsWithStaticData
     public static function findMany(array|Arrayable $ids, array $columns = ['*']): Collection
     {
         $model = new static();
+        $model->setConnection($model->getConnection()->getName());
 
         if ($ids instanceof Arrayable) {
             $ids = $ids->toArray();
