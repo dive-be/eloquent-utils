@@ -6,9 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 
-/**
- * @mixin \Illuminate\Database\Eloquent\Model
- */
+/** @mixin \Illuminate\Database\Eloquent\Model */
 trait InteractsWithStaticData
 {
     use DisablesTimestamps;

@@ -2,12 +2,10 @@
 
 namespace Dive\Eloquent;
 
-/**
- * @mixin \Illuminate\Database\Eloquent\Model
- */
+/** @mixin \Illuminate\Database\Eloquent\Model */
 trait Unguarded
 {
-    public function initializeUnguarded()
+    public function initializeUnguarded(): void
     {
         $this->guarded = false;
     }

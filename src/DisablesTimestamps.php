@@ -2,12 +2,10 @@
 
 namespace Dive\Eloquent;
 
-/**
- * @mixin \Illuminate\Database\Eloquent\Model
- */
+/** @mixin \Illuminate\Database\Eloquent\Model */
 trait DisablesTimestamps
 {
-    public function initializeDisablesTimestamps()
+    public function initializeDisablesTimestamps(): void
     {
         $this->timestamps = false;
     }
