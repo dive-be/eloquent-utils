@@ -2,6 +2,18 @@
 
 All notable changes to `eloquent-utils` will be documented in this file.
 
+## 0.2.0 - 2022-05-24
+
+### Added
+
+- PHP 8.2 support
+- Laravel 10 support
+
+### Removed
+
+- PHP 8.1 support
+- Laravel 9 support
+
 ## 0.1.2 - 2023-04-03
 
 ### Fixed
