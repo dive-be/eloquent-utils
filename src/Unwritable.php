@@ -3,8 +3,9 @@
 namespace Dive\Eloquent;
 
 use BadMethodCallException;
+use Illuminate\Database\Eloquent\Model;
 
-/** @mixin \Illuminate\Database\Eloquent\Model */
+/** @mixin Model */
 trait Unwritable
 {
     public static function create(array $attributes = []): never

@@ -4,9 +4,10 @@ namespace Dive\Eloquent;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-/** @mixin \Illuminate\Database\Eloquent\Model */
+/** @mixin Model */
 trait InteractsWithStaticData
 {
     use DisablesTimestamps;
