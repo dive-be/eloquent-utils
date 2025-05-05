@@ -2,6 +2,18 @@
 
 All notable changes to `eloquent-utils` will be documented in this file.
 
+## 0.4.0 - 2025-05-05
+
+### Added
+
+- PHP 8.4 support
+- Laravel 12 support
+
+### Removed
+
+- PHP 8.3 support
+- Laravel 11 support
+
 ## 0.3.0 - 2024-03-14
 
 ### Added
